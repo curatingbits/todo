@@ -12,9 +12,7 @@ class Login extends Component {
   }
 
   handleFormSubmit(e){
-
          e.preventDefault();
-
          this.Auth.login(this.state.email, this.state.password)
              .then(res =>{
                console.log(this.props)

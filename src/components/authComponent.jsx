@@ -39,6 +39,16 @@ export default class Auth {
         })
     }
 
+
+    projects(id) {
+      return this.fetch(`${this.domain}/api/v1/projects`,{
+        method: 'GET',
+
+      }).then(function(data){
+        return Promise.resolve(data);
+      })
+    }
+
     loggedIn() {
         // Checks if there is a saved token and it's still valid
         const token = this.getToken() // GEtting token from localstorage
