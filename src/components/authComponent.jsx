@@ -41,7 +41,18 @@ export default class Auth {
 
 
     projects(id) {
-      return this.fetch(`${this.domain}/api/v1/projects`,{
+      console.log(id.user_id)
+      return this.fetch(`${this.domain}/api/v1/projects?id=` +id.user_id,{
+        method: 'GET',
+
+      }).then(function(data){
+        return Promise.resolve(data);
+      })
+    }
+
+    todos(id) {
+      console.log(id)
+      return this.fetch(`${this.domain}/api/v1/todos?id=`+id,{
         method: 'GET',
 
       }).then(function(data){

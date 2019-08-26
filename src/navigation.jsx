@@ -1,5 +1,8 @@
 import React, {Component} from "react";
-import { withRouter } from 'react-router';
+import { withRouter} from 'react-router';
+import { Link } from "react-router-dom";
+
+
 import Auth from './components/authComponent'
 import {
     Collapse,
@@ -40,6 +43,7 @@ export class Navigation extends Component {
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem>
+                  <Link to={"/project"}>project</Link>
                   <NavLink onClick={this.handleLogout.bind(this)}>Logout</NavLink>
                 </NavItem>
               </Nav>
