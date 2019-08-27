@@ -51,7 +51,7 @@ export default class Auth {
     }
 
     todos(id) {
-      console.log(id)
+
       return this.fetch(`${this.domain}/api/v1/todos?id=`+id,{
         method: 'GET',
 
@@ -59,6 +59,47 @@ export default class Auth {
         return Promise.resolve(data);
       })
     }
+
+    deleteProject(id){
+      return this.fetch(`${this.domain}/api/v1/projects/`+id,{
+        method: 'DELETE',
+      }).then(function(data){
+        return Promise.resolve(data);
+
+      })
+    }
+
+
+    newProject(name,description, profile) {
+      var user_id = profile.user_id
+      return this.fetch(`${this.domain}/api/v1/projects`,{
+        method: 'POST',
+        body: JSON.stringify({
+            name,
+            description,
+            user_id
+
+        })
+      }).then(function(data){
+        return Promise.resolve(data);
+      })
+    }
+
+
+    newTodo(name, project) {
+      var project_id = project
+      return this.fetch(`${this.domain}/api/v1/todos`,{
+        method: 'POST',
+        body: JSON.stringify({
+            name,
+            project_id
+
+        })
+      }).then(function(data){
+        return Promise.resolve(data);
+      })
+    }
+
 
     loggedIn() {
         // Checks if there is a saved token and it's still valid

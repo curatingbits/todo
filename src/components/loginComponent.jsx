@@ -21,13 +21,8 @@ class Login extends Component {
              .catch(err =>{
                  alert(err);
              })
-     }
-
-
-
-
+           }
   render(){
-
     return(
       <div>
         <Container className="mt-5">
