@@ -60,7 +60,7 @@ export default class Auth {
       })
     }
 
-    
+
 
     deleteProject(id){
       return this.fetch(`${this.domain}/api/v1/projects/`+id,{
@@ -104,6 +104,22 @@ export default class Auth {
     }
 
 
+    editProject(name,description,project) {
+      return this.fetch(`${this.domain}/api/v1/projects/`+project,{
+        method: 'PUT',
+        body: JSON.stringify({
+            name,
+            description,
+
+
+
+        })
+      }).then(function(data){
+        return Promise.resolve(data);
+      })
+    }
+
+
     newTodo(name, project) {
       var project_id = project
       return this.fetch(`${this.domain}/api/v1/todos`,{
@@ -116,6 +132,15 @@ export default class Auth {
       }).then(function(data){
         return Promise.resolve(data);
       })
+    }
+
+    deleteTodo(id){
+      return this.fetch(`${this.domain}/api/v1/todos/`+id,{
+        method: 'DELETE',
+      }).then(function(data){
+        return Promise.resolve(data);
+      })
+
     }
 
 

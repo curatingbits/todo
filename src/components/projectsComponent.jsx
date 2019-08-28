@@ -9,24 +9,32 @@ constructor(){
     super();
     this.handleChange = this.handleChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.editFormSubmit = this.editFormSubmit.bind(this);
     this.deleteProject = this.deleteProject.bind(this)
     this.Auth = new Auth();
     this.state = {
       projects: [],
       modal: false,
+      edit: false,
       collapse: false,
       updateForm: true,
       projectID: '',
       shown: true,
-      project:[]
+      project:[],
+      name: null,
+      description: null,
+      id: null,
     }
     this.toggle = this.toggle.bind(this);
   }
 
   toggle() {
+
     this.setState(prevState => ({
       modal: !prevState.modal,
+      edit: false,
     }));
+    this.setState({name: null, description: null, id: null})
   }
 
 
@@ -76,10 +84,41 @@ constructor(){
     })
   }
 
+editFormSubmit(e){
+  e.preventDefault();
+  this.Auth.editProject(this.state.name, this.state.description, this.state.id)
+  .then(res =>{
+    console.log(res)
+    this.componentDidMount()
+    this.setState(prevState => ({
+      modal: !prevState.modal,
+    }));
+  })
+  .catch(err =>{
+    alert(err);
+  })
+}
+
+
+edit(item){
+
+  this.setState({name:item.name, id: item.id, description: item.description})
+
+  this.setState(prevState => ({
+    edit: true,
+    modal: !prevState.modal,
+  }));
+
+
+
+
+}
+
+
 
 
   render() {
-
+      console.log(this.state.edit)
     return (
       <div>
       <Container>
@@ -102,14 +141,14 @@ constructor(){
       <ModalHeader toggle={this.toggle}>New Project</ModalHeader>
       <ModalBody>
 
-      <Form className="mt-4" onSubmit={this.handleFormSubmit}>
+      <Form className="mt-4" onSubmit={ this.state.edit === false ? this.handleFormSubmit : this.editFormSubmit}>
       <FormGroup>
       <Label for="projectName">Project Name</Label>
-      <Input type="field" name="name" id="name" placeholder="Work, Personal, Groceries..." onChange={this.handleChange}/>
+      <Input type="field" name="name"  id="name" placeholder="Work, Personal, Groceries..." onChange={this.handleChange} value={this.state.name === null ? '' : this.state.name}/>
       </FormGroup>
       <FormGroup>
       <Label for="projectDescription">Description</Label>
-      <Input type="textarea" name="description" id="description" placeholder="Notes about the project..." onChange={this.handleChange}/>
+      <Input type="textarea" name="description" id="description" placeholder="Notes about the project..." onChange={this.handleChange} value={this.state.description === null ? '' : this.state.description}/>
       </FormGroup>
 
       <Button color="primary" >Create Project</Button>
