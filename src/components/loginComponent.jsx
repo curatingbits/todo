@@ -7,12 +7,15 @@ class Login extends Component {
   constructor(){
       super();
       this.handleChange = this.handleChange.bind(this);
+
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
-      this.Auth = new Auth();
+      this.Auth = new Auth("http://localhost:3003");
   }
+
 
   handleFormSubmit(e){
          e.preventDefault();
+
          this.Auth.login(this.state.email, this.state.password)
              .then(res =>{
                console.log(this.props)
@@ -40,27 +43,27 @@ class Login extends Component {
                   <Label for="examplePassword">Password</Label>
                   <Input type="password" name="password" id="Password" placeholder="Password" onChange={this.handleChange}/>
                 </FormGroup>
-
                 <Button outline color="warning" block>Submit</Button>
               </Form>
+              <p className="lead mt-4">Don't have an account? <a href="/signup" className="text-warning">Signup.</a></p>
               </Card>
             </Col>
           </Row>
         </Container>
       </div>
     )
-
   }
 
 
 handleChange(e){
+
+
     this.setState(
         {
             [e.target.name]: e.target.value
         }
     )
-}
-
+  }
 }
 
 

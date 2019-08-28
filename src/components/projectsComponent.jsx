@@ -5,7 +5,7 @@ import { Container, Row, Col, Button, Card, CardHeader, Modal, ModalHeader, Moda
 import Todo from '../components/todoComponent'
 class Pages extends Component {
 
-  constructor(){
+constructor(){
     super();
     this.handleChange = this.handleChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -17,6 +17,8 @@ class Pages extends Component {
       collapse: false,
       updateForm: true,
       projectID: '',
+      shown: true,
+      project:[]
     }
     this.toggle = this.toggle.bind(this);
   }
@@ -74,6 +76,8 @@ class Pages extends Component {
     })
   }
 
+
+
   render() {
 
     return (
@@ -82,11 +86,11 @@ class Pages extends Component {
       <Row>
       <Col lg={{size: 6, offset: 3}}>
 
-      <h3 className="mt-2">Current Projects <Button className="float-right primary" onClick={this.toggle}>New Project</Button></h3>
-      { this.state.projects.map((project,i) => (
-        <Card key={i} className="mt-3">
-        <CardHeader><h4>{project.name} <Button onClick={this.deleteProject.bind(this, project.id)}>Delete</Button></h4> </CardHeader>
 
+      <h3 className="mt-2">Current Projects <Button className="float-right primary" onClick={this.toggle}>New Project</Button></h3>
+        { this.state.projects.map((project,i) => (
+        <Card key={i} className="mt-3">
+        <CardHeader><h4>{project.name} <Button onClick={this.deleteProject.bind(this, project.id)}  color="danger" size="sm" className="float-right">Delete</Button><Button onClick={(e) => this.edit(project)}  color="warning" size="sm" className="float-right">Edit</Button></h4></CardHeader>
         <Todo item={{id: project.id}} />
         </Card>
       ))}
@@ -128,6 +132,11 @@ class Pages extends Component {
       }
     )
   }
+
+
+
+
+
 }
 
 

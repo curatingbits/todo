@@ -60,9 +60,27 @@ export default class Auth {
       })
     }
 
+    
+
     deleteProject(id){
       return this.fetch(`${this.domain}/api/v1/projects/`+id,{
         method: 'DELETE',
+      }).then(function(data){
+        return Promise.resolve(data);
+
+      })
+    }
+
+    updateCompleted(completed, id){
+      console.log(completed)
+      return this.fetch(`${this.domain}/api/v1/todos/`+id,{
+        method: 'PUT',
+        body: JSON.stringify({
+            todo: {
+              id,
+              completed
+            }
+        })
       }).then(function(data){
         return Promise.resolve(data);
 
