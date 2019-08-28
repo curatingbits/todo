@@ -9,7 +9,7 @@ class Login extends Component {
       this.handleChange = this.handleChange.bind(this);
 
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
-      this.Auth = new Auth("http://localhost:3003");
+      this.Auth = new Auth();
   }
 
 
