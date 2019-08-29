@@ -4,7 +4,7 @@ An easy way to stay productive by creating projects and listing out tasks.
 Tasks frontend client is bult using React and [Rails as the API backend](https://github.com/curatingbits/todo-api) using Postgres.  
 
 
-** Tasks is dependent on the Rails Backend, visit the repo for installation instructions.**
+**Tasks is dependent on the Rails API backend mentioned above, visit the repo for installation instructions.**
 
 ### Live example below<br>
 https://ancient-headland-91530.herokuapp.com/
