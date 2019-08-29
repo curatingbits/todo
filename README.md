@@ -19,7 +19,7 @@ Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
 
 In the project directory, run:
 
-`docker-compose build`
+`docker-compose build` <br>
 `docker-compose up`
 
 
