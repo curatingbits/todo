@@ -13,9 +13,10 @@
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
-    "build": "react-scripts build",
+    "build": "webpack --env.API_URL=https://www.myapi.com --config webpack.config.build.js",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "webpack --env.API_URL=http://localhost:3000 --config webpack.config.dev.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -31,5 +32,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7"
   }
 }

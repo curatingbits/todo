@@ -129,7 +129,7 @@ edit(item){
       <h3 className="mt-2">Current Projects <Button className="float-right primary" onClick={this.toggle}>New Project</Button></h3>
         { this.state.projects.map((project,i) => (
         <Card key={i} className="mt-3">
-        <CardHeader><h4>{project.name} <Button onClick={this.deleteProject.bind(this, project.id)}  color="danger" size="sm" className="float-right">Delete</Button><Button onClick={(e) => this.edit(project)}  color="warning" size="sm" className="float-right">Edit</Button></h4></CardHeader>
+        <CardHeader><h4>{project.name} <Button onClick={this.deleteProject.bind(this, project.id)}  color="danger" size="sm" className="float-right ml-1">Delete</Button><Button onClick={(e) => this.edit(project)}  color="warning" size="sm" className="float-right">Edit</Button></h4></CardHeader>
         <Todo item={{id: project.id}} />
         </Card>
       ))}

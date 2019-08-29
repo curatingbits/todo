@@ -3,7 +3,7 @@ import decode from 'jwt-decode';
 export default class Auth {
     // Initializing important variables
     constructor(domain) {
-        this.domain = domain || 'http://localhost:3000' // API server domain
+        this.domain = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API :'http://localhost:3001' //API server domain
         this.fetch = this.fetch.bind(this) // React binding stuff
         this.login = this.login.bind(this)
         this.getProfile = this.getProfile.bind(this)
